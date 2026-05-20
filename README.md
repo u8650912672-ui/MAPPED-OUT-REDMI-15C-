@@ -70,10 +70,14 @@ No memory write here
     Contains a bl memcpy or blx r3 with user‑controlled size	None found yet, but that’s the holy grail	Direct buffer overflow
 
 
-another critical thing i found while dumping parts is 
-   
-    0x4266   str.w r1, [r2, r3, lsl 2]
-    this is important as
-    r2 = base buffer pointer (from var_10h)
-    r3 = loop counter  
-    lsl 2 = multiply index by 4 (writing 32-bit values)
+0xd4 handler (0x420c):
+- Reads two 32‑bit values from USB into [var_10h] and [var_14h]
+- [var_10h] = buffer pointer (supplied by host? or pre‑allocated?)
+- [var_14h] = element count
+- Checks [var_10h] alignment (must be multiple of 4)
+- Calls allocator fcn.00031fac with size = element_count * 4
+- Enters write loop from i=0 to element_count:
+    - Reads a 32‑bit USB value into [var_18h]
+    - Stores it at [buffer + i*4]
+    - Increments i
+- After loop, returns status in fp (r11)
