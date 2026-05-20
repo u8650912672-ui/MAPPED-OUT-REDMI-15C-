@@ -1,0 +1,18 @@
+##Info about the 0xd4 handler
+
+### Engineering preloader differences (0xd4 handler)
+
+Stock:
+  - USB read: fcn.00003bc8
+  - Status write: fcn.00003b64
+  - Allocator: fcn.00031fac
+  - Branch target for error: 0x426e
+
+Engineering:
+  - USB read: fcn.00003b94
+  - Status write: fcn.00003b30
+  - Allocator: fcn.00031fac  (same address! only this function didn't move)
+  - Branch target for error: 0x423a
+
+Important: The allocator is at the same address in both binaries.
+Only the USB I/O functions moved.
