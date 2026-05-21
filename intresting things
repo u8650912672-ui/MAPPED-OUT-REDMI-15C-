@@ -8,4 +8,4 @@ Intresting things i can find
 
       0x3fd6   movw fp, 0x1d18
 
-    If we overwrite that instruction with movw fp, 0x0000, the preloader will return success for any upload, bypassing DAA/SLA. We can try writing to that exact address.
+    If i were to overwrite that instruction with movw fp, 0x0000, the preloader will return success for any upload, bypassing DAA/SLA. We can try writing to that exact address.
