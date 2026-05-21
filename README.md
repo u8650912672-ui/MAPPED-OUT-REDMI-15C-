@@ -83,3 +83,5 @@ No memory write here
 
 
 as for what i can map out now its not posseble to do root your phone without the paperclip bypass
+the paperclip bypass is putting some metal such as tinfoil (has to be thin) touching some parts idk what or how that apparently bypasses and boots brom 
+not something i know how to do or have done
