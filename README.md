@@ -1,3 +1,7 @@
+#  Project Tidy – Redmi 15C Preloader Map
+Reverse-engineered USB handler table and key code analysis for the MediaTek MT6768 preloader :) for the Xiaomi Redmi 15C ofc 
+i have used radare2, mtkclient, and 1 exploit being MQSAS root access. Root access is locked down tho due to the limit from SElinux as it dont allow us to exploit it IF i were to be able to disable i would have a full user to root escelation exploit but the fun is i have a full 0 click shell to root escelation
+
 # MAPPED-OUT-REDMI-15C-
 ## NOTE THAT THIS IS SUMMED UP BY AI HEAVELY
 just some random info i got while i was tryna root
