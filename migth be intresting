@@ -1,0 +1,10 @@
+From source code i have found this info 
+selinux_enforcing is static from hooks.c line 115 meaing no export, no external access modules cannot touch it directly.
+F2FS null/overflow search lands no direct hits so no exploits found.
+splice/mmap did have hits but nothing intresting just normal kernel code without any exploits in sigth.
+MediaTek IOCTL handlers all just wrapped in video_ioctl2 aka V4L2 framework function, they migth have bugs but not very likely.
+### intresting stuff
+mtk_share_obj has sram buffers to be exact remoteproc/mtk_common.h shared memory between AP and SCP (NOT THAT SCP), If there's an mmap or ioctl interface exposing these buffers to userspace that could expose direct kernel rw permission.
+copy_from_user in mt76 debugfs (mt7915, mt7615, mt7996) are user writeble debugfs files. If any handler lacks proper bounds checking we could have a kernel overflow.
+## the most promising 
+The GKI kernel only contains upstream MediaTek drivers. Thats the most dangerous attack surface mostly because the proprietary MediaTek drivers(mtk_cmdq, mtk_smi, mtk_iommu, gz_trusty, mali_kbase) IS NOT THERE they are in Those drivers are in the dew-v-oss and they're the ones with the most custom code and least upstream scrutiny.
